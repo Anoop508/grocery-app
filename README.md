@@ -77,3 +77,20 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# Development
+
+## React-Native Navigation
+1. npm install @react-navigation/native
+2. npm install react-native-screens react-native-safe-area-context
+### Stack Navigation
+3. npm install @react-navigation/native-stack
+4. npm install react-native-gesture-handler 
+ ### Drawer Navigation
+5. npm install @react-navigation/drawer
+6. npm install react-native-reanimated 
+7. Add react-native-reanimated/plugin plugin to your babel.config.js.
+```
+ plugins: ['react-native-reanimated/plugin'],
+ ```
+8. npm start -- --reset-cache
