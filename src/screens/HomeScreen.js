@@ -1,11 +1,54 @@
-import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
+import { View, Text, StyleSheet, Image, Touchable } from 'react-native';
+import React, { useState } from 'react';
 import Header from '../common/Header';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { red } from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
+import Home from './tabs/Home';
+import Search from './tabs/Search';
+import Notification from './tabs/Notification';
+import User from './tabs/User';
+import Wishlist from './tabs/Wishlist';
 
-const HomeScreen = () =>{
-    return(
+
+
+const HomeScreen = () => {
+    const [selectedTab, setSelectedTab] = useState(0);
+    return (
         <View style={styles.container}>
-            <Header/>
+            <Header
+                leftIcon={require('../images/menu.png')}
+                rightIcon={require('../images/cart.png')}
+                title='Grocery App'
+            />
+            {selectedTab == 0 ? (
+                <Home />
+            ) : selectedTab == 1 ? (
+                <Search />
+            ) : selectedTab == 2 ? (
+                <Wishlist />
+            ) : selectedTab == 3 ? (
+                <Notification />
+            ) : (
+                <User />
+            )}
+            <View style={styles.bottomView}>
+                <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(0)}>
+                    <Image style={styles.bottomTabIcon} source={require('../images/home.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(1)}>
+                    <Image style={styles.bottomTabIcon} source={require('../images/search.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(2)}>
+                    <Image style={styles.bottomTabIcon} source={require('../images/wishlist.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(3)}>
+                    <Image style={styles.bottomTabIcon} source={require('../images/noti.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(4)}>
+                    <Image style={styles.bottomTabIcon} source={require('../images/user.png')} />
+                </TouchableOpacity>
+
+            </View>
         </View>
     )
 }
@@ -13,7 +56,29 @@ const HomeScreen = () =>{
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1
+    container: {
+        flex: 1
+    },
+    bottomView: {
+        position: 'absolute',
+        bottom: 0,
+        width: "100%",
+        height: 70,
+        backgroundColor: '#fff',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        // backgroundColor:'red'
+    },
+    buttomTab: {
+        width: '20%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // backgroundColor: 'pink'
+    },
+    bottomTabIcon: {
+        height: 24,
+        width: 24,
     }
 })
