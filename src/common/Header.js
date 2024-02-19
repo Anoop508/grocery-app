@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import MenuIcon from '../images/menu.png'
+import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window')
 
@@ -13,7 +14,9 @@ const Header = ({title,
     isCart}) => {
     return (
         <View style={styles.header}>
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity style={styles.btn} onPress={() => {
+           onClickLeftIcon();
+        }}>
                 <Image source={leftIcon} style={styles.icon} />
             </TouchableOpacity>
             <Text style={styles.title}>{title}</Text>

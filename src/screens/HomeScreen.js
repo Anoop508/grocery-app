@@ -15,11 +15,6 @@ const HomeScreen = () => {
     const [selectedTab, setSelectedTab] = useState(0);
     return (
         <View style={styles.container}>
-            <Header
-                leftIcon={require('../images/menu.png')}
-                rightIcon={require('../images/cart.png')}
-                title='Grocery App'
-            />
             {selectedTab == 0 ? (
                 <Home />
             ) : selectedTab == 1 ? (
@@ -33,19 +28,19 @@ const HomeScreen = () => {
             )}
             <View style={styles.bottomView}>
                 <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(0)}>
-                    <Image style={styles.bottomTabIcon} source={require('../images/home.png')} />
+                    <Image style={styles.bottomTabIcon} source={selectedTab==0?require('../images/home_fill.png'):require('../images/home.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(1)}>
                     <Image style={styles.bottomTabIcon} source={require('../images/search.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(2)}>
-                    <Image style={styles.bottomTabIcon} source={require('../images/wishlist.png')} />
+                    <Image style={styles.bottomTabIcon} source={selectedTab==2?require('../images/wishlist_fill.png'):require('../images/wishlist.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(3)}>
-                    <Image style={styles.bottomTabIcon} source={require('../images/noti.png')} />
+                    <Image style={styles.bottomTabIcon} source={selectedTab==3?require('../images/noti_fill.png'):require('../images/noti.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(4)}>
-                    <Image style={styles.bottomTabIcon} source={require('../images/user.png')} />
+                    <Image style={styles.bottomTabIcon} source={selectedTab==4?require('../images/user.png'):require('../images/user.png')} />
                 </TouchableOpacity>
 
             </View>
