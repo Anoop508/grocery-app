@@ -1,18 +1,36 @@
-import { View, Text, StyleSheet, Image, Touchable } from 'react-native';
-import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Keyboard } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import Header from '../common/Header';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { red } from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 import Home from './tabs/Home';
 import Search from './tabs/Search';
 import Notification from './tabs/Notification';
 import User from './tabs/User';
 import Wishlist from './tabs/Wishlist';
-
+dff
 
 
 const HomeScreen = () => {
     const [selectedTab, setSelectedTab] = useState(0);
+    const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+              'keyboardDidShow',
+      () => {
+        setIsKeyboardVisible(true);
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setIsKeyboardVisible(false);
+      },
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
     return (
         <View style={styles.container}>
             {selectedTab == 0 ? (
@@ -26,7 +44,9 @@ const HomeScreen = () => {
             ) : (
                 <User />
             )}
-            <View style={styles.bottomView}>
+            {
+                !isKeyboardVisible && (
+                    <View style={styles.bottomView}>
                 <TouchableOpacity style={styles.buttomTab} onPress={() => setSelectedTab(0)}>
                     <Image style={styles.bottomTabIcon} source={selectedTab==0?require('../images/home_fill.png'):require('../images/home.png')} />
                 </TouchableOpacity>
@@ -44,6 +64,8 @@ const HomeScreen = () => {
                 </TouchableOpacity>
 
             </View>
+                )
+            }
         </View>
     )
 }

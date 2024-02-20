@@ -2,12 +2,15 @@ import {View, Text, StyleSheet, Dimensions, FlatList, Image, TouchableOpacity} f
 import React, { useEffect, useState } from 'react';
 import Header from '../../common/Header';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { addProducts } from '../../redux/slices/ProductSlice';
 
 
 
 const Home = ()=>{
     const navigation = useNavigation();
     const [products, setProducts] = useState([])
+    const dispatch = useDispatch();
     useEffect(()=>{
         getProducts();
     },[])
@@ -15,7 +18,11 @@ const Home = ()=>{
     const getProducts = () =>{
         fetch('https://fakestoreapi.com/products')
             .then(res=>res.json())
-            .then(json=>setProducts(json))
+            .then(json=>
+                {
+                    setProducts(json)
+                    dispatch(addProducts(json))
+                })
     }
     return(
         <View style={styles.container}>

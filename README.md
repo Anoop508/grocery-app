@@ -94,3 +94,11 @@ To learn more about React Native, take a look at the following resources:
  plugins: ['react-native-reanimated/plugin'],
  ```
 8. npm start -- --reset-cache
+
+## Integration Redux toolkit
+
+1. Need to run these two command in our project directory
+```
+npm install @reduxjs/toolkit
+npm install react-redux
+```
