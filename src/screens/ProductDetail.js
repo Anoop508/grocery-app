@@ -3,9 +3,12 @@ import React from 'react';
 import Header from '../common/Header';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import CustomButton from '../common/CustomButton';
+import { useDispatch } from 'react-redux';
+import { addItemToWishList } from '../redux/slices/WishlistSlice';
 
 
 const ProductDetail = () =>{
+    const dispatch = useDispatch();
     const navigation = useNavigation();
     const route = useRoute();
     return(
@@ -18,7 +21,9 @@ const ProductDetail = () =>{
                 <Text style={{color:'#000', fontSize:20, fontWeight:700}}>Price:</Text>
                 <Text style={{color:'green', fontSize:20, fontWeight:'700'}}>{` $${route.params.data.price}`}</Text>
             </View>
-            <TouchableOpacity style={styles.wishlistbtn}>
+            <TouchableOpacity style={styles.wishlistbtn} onPress={()=>{
+                dispatch(addItemToWishList(route.params.data))
+            }}>
                 <Image style={{width:25, height:25}} source={require('../images/wishlist.png')} />
             </TouchableOpacity>
             <CustomButton bg="orange" title="Add Cart" color='#fff' />

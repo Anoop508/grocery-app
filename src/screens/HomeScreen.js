@@ -6,7 +6,6 @@ import Search from './tabs/Search';
 import Notification from './tabs/Notification';
 import User from './tabs/User';
 import Wishlist from './tabs/Wishlist';
-dff
 
 
 const HomeScreen = () => {
