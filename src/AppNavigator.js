@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Main from './screens/Main'
 import ProductDetail from './screens/ProductDetail';
 const Stack = createNativeStackNavigator();
+import Cart from './screens/Cart';
 
 const AppNavigator = () => {
     return (
@@ -19,7 +20,12 @@ const AppNavigator = () => {
                     name="ProductDetails"
                     component={ProductDetail}
                     options={{headerShown:false}}
-                    />   
+                    />  
+                <Stack.Screen
+                    name="Cart"
+                    component={Cart}
+                    options={{headerShown:false}} 
+                    />
             </Stack.Navigator>
         </NavigationContainer>
     )

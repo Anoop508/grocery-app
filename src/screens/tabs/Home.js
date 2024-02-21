@@ -21,6 +21,8 @@ const Home = ()=>{
             .then(json=>
                 {
                     setProducts(json)
+                    json.map(item=>
+                        item.qty=1 )
                     dispatch(addProducts(json))
                 })
     }
@@ -33,6 +35,7 @@ const Home = ()=>{
                 onClickLeftIcon={() => {
                     navigation.openDrawer()
                   }}
+                isCart={true}
             />
            <FlatList 
             data={products}

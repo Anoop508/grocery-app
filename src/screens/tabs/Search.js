@@ -23,7 +23,7 @@ const Search = ()=>{
 
     return(
         <View style={styles.container}>
-            <Header title="Search Item"/>
+            <Header title="Search Item" isCart={true} rightIcon={require('../../images/cart.png')}/>
             <View style={styles.searchView}>
             <View style={{flexDirection:'row', alignItems:'center'}}>
             <TouchableOpacity>

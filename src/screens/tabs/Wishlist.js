@@ -12,7 +12,7 @@ const WishList = ()=>{
 
     return(
         <View style={styles.container}>
-            <Header title='WishList' />
+            <Header title='WishList' rightIcon={require('../../images/cart.png')} isCart={true} />
             <FlatList 
             data={wishlist}
             renderItem={({item, index})=>{
