@@ -1,0 +1,36 @@
+import { StyleSheet, Text, View, TextInput, Button } from "react-native"
+import QRCodeScanner from "react-native-qrcode-scanner"
+import { RNCamera } from "react-native-camera"
+import { useEffect, useState } from "react"
+import { StackActions, useNavigation } from "@react-navigation/native";
+
+
+const ScannerScreen = () => {
+    const [data, setData] = useState('');
+    const nav = useNavigation();
+
+    useEffect(() => {
+        nav1();
+    }, [data])
+
+    const nav1 = () =>{
+        if(data){
+        nav.navigate("RegisterScreen", data)
+        }
+    } 
+
+    return (
+        <QRCodeScanner
+            onRead={({ data }) => setData(data)}
+            reactivate={true}
+            reactivateTimeout={500}
+            showMarker={true}
+            topContent={
+                <View><Text>Please Scan QR  Code</Text></View>
+            }
+        />
+    )
+}
+
+
+export default ScannerScreen;
